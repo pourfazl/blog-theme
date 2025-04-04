@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- FONTS !-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Harmattan:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo+Play:wght@200..1000&family=Harmattan:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- Meta Declaration !-->
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-language" content="fa">
+    <meta name="description" content="<-BlogMetaDescription->">
+    <meta name="generator" content="blogfa.com">
+    <meta property="og:title" content="<-AutoPageTitle->">
+    <meta property="og:site_name" content="<-BlogTitle->">
+    <meta property="og:description" content="<-BlogMetaDescription->">
+    <link rel="alternate" type="application/rss+xml" title="<-BlogTitle->" href="<-BlogXmlLink->"/>
+    
+    
+    <!-- Comments Script !-->
+    <script src="https://theme.blogfa.com/public/theme.1.2.js"  type="text/javascript" ></script>
+    <script type="text/javascript">
+     try {
+      cmt_caption[0]="نظرات";
+      cmt_caption[1]="نظر بدهيد";
+      cmt_caption[2]="يک نظر";
+      cmt_caption[3]="نظر";
+      cmt_blogid="<-BlogId->";
+      }
+      catch(e) {}
+     
+    </script>
+    
+    
+    <!--Blog title !-->
+
+    <title><-BlogAndPostTitle-></title>
+    
+    <!-- CSS !-->
+    <style>
+
+        /* Welcome */
+       #welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            opacity: 1;
+            transition: opacity 1s ease-out;
+        }
+        #welcome-message {
+            font-family: Noto Sans Arabic;
+            font-size: 3.5rem;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        // <weight>: Use a value from 200 to 1000
+        // <uniquifier>: Use a unique and descriptive class name
+
+        .cairo-play-<uniquifier> {
+          font-family: "Cairo Play", sans-serif;
+          font-optical-sizing: auto;
+          font-weight: <weight>;
+          font-style: normal;
+          font-variation-settings:
+            "slnt" 0;
+        }
+        
+        .noto-sans-arabic-<uniquifier> {
+          font-family: "Noto Sans Arabic", sans-serif;
+          font-optical-sizing: auto;
+          font-weight: <weight>;
+          font-style: normal;
+          font-variation-settings:
+            "wdth" 100;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f8f9fa;
+            text-align: right;
+        }
+
+        .header {
+            font-family: Noto Sans Arabic;
+            background: white;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .header-content {
+            font-size: 10pt;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .blog-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .blog-description {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .profile {
+            font-family: Noto Sans Arabic;
+            text-align: center;
+        }
+        
+        /* Hamburger Menu Button */
+        .menu-toggle {
+            position: fixed;
+            left: 20px;
+            bottom: 190px;
+            background: #fd740e;
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -250px;
+            width: 250px;
+            height: 100vh;
+            background: white;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto; /* Enable scrolling */
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar-header {
+            font-family: Noto Sans Arabic;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+        }
+
+        .side-box {
+            font-family: Noto Sans Arabic;
+            padding: 2rem 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+        
+        }
+        .nav-links {
+            font-family: Noto Sans Arabic;
+            list-style: none;
+            padding: 2rem 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        /* Link Styling */
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        a:visited {
+            color: #7c3aed;
+        }
+
+        a:hover {
+            color: #1d4ed8;
+            border-bottom-color: currentColor;
+        }
+        
+        
+
+        .nav-links a {
+            color: #333;
+            font-weight: 500;
+            border-bottom: none;
+            padding: 0.25rem 0;
+            position: relative;
+        }
+
+        .nav-links a:visited {
+            color: #333;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+            border-bottom: none;
+        }
+
+        /* Updated underline animation - now left to right */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;  /* Changed from right:0 */
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: #2563eb;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+            right: 0; /* Changed from left:0 */
+            left: auto;
+        }
+
+        .main-content {
+            flex: 1;
+            width: 100%;
+        }
+
+        .posts-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        .post {
+            font-family: Noto Sans Arabic;
+            background: white;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            text-align: right;
+        }
+
+        .post-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #333;
+        }
+
+        .post-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .post-content {
+            color: #444;
+            line-height: 1.6;
+            text-align: justify;
+            text-align-last: right;
+            word-spacing: -0.2em; /* Adjust Arabic letter spacing */
+            hyphens: auto;
+        }
+
+
+        /* Fix for WebKit browsers */
+        @supports (-webkit-hyphens: auto) {
+            .post-content {
+                word-spacing: normal;
+                -webkit-hyphens: auto;
+                -ms-hyphens: auto;
+                hyphens: auto;
+            }
+        }
+
+        .footer {
+            font-family: Cairo Play;
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #aaa; /* Gray color */
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: white; /* White on hover */
+        }
+
+        @media (max-width: 768px) {
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                justify-content: flex-start;
+                gap: 0rem;
+            }
+            
+            .post {
+                padding: 1.5rem;
+            }
+
+            .posts-container,
+            .header-content,
+            .footer-content {
+                padding: 0 1rem;
+                max-width: 100%;
+            }
+        }
+        
+        
+        /* Simplified Pagination */
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem auto;
+            max-width: 800px;
+            padding: 0 1.5rem;
+        }
+
+        .pagination a {
+            font-family: 'Noto Sans Arabic';
+            background: white;
+            border: 1px solid #ddd;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            color: #333;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .pagination a:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .pagination .disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        .nextandprevious{line-height:150%;padding-bottom:15px;padding-right:10px;padding-left:5px;}
+        .previouslink{float:right;}
+        .nextlink{float:left;}
+    </style>
+</head>
+
+<!-- Body !-->
+<body>
+    <div id="welcome-overlay">
+        <div id="welcome-message">درود، خوش آمدید<br>سیگار با ته‌چین ماست</div>
+
+    </div>
+
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+        // Get the URL details
+        const currentPath = window.location.pathname;
+        const hasQueryParams = window.location.search.length > 0; // Checks if there are query parameters
+
+        // If NOT the exact homepage, prevent the overlay from loading
+        if (!(window.location.origin === "https://lowpass.blogfa.com" && currentPath === "/" && !hasQueryParams)) {
+            const overlay = document.getElementById('welcome-overlay');
+            if (overlay) {
+                overlay.remove(); // Completely remove it before it appears
+            }
+            return; // Stop further execution
+        }
+
+        //  Show & Hide Overlay ONLY on the exact homepage
+        setTimeout(function() {
+            const overlay = document.getElementById('welcome-overlay');
+            if (overlay) {
+                overlay.style.opacity = '0';
+                setTimeout(() => overlay.remove(), 500); // Fade out & remove
+            }
+        }, 2000); // Display for 2 seconds
+    });
+</script>
+
+
+
+
+
+
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>اضافات</h3>
+        </div>
+        
+        <!-- Profile Pic and About Section !-->
+        <div class="profile">
+            <BlogProfile>
+            <BlogPhoto><img src="<-BlogPhotoLink->" ></BlogPhoto>
+            <-BlogAbout->
+            </BlogProfile>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="/">صفحه اصلی</a></li>
+            <BlogProfileLinkBlock><li><a href="<-BlogProfileLink->">پروفایل</a></li></BlogProfileLinkBlock>
+            <BlogEmailBlock><li><a href="mailto:<-BlogEmail->">تماس با من</a></li></BlogEmailBlock>
+            <li><a href="<-BlogArchiveLink->">آرشیو وبلاگ</a></li>
+        </ul>
+        <div class="side-box">
+        <BlogArchiveBlock>
+            <h2>نوشته‌های پیشین</h2>
+            <ul>
+                <BlogArchive>
+                    <li><a href="<-ArchiveLink->"><-ArchiveTitle-></a></li>
+                </BlogArchive>
+            </ul>
+        </BlogArchiveBlock>
+        </div>
+    </div>
+    
+     <!-- Main Content -->
+    <header class="header">
+        <div class="header-content">
+            <div>
+                <h1><a href="<-BlogUrl->"><-BlogTitle-></a></h1>
+                <h2><-BlogDescription-></h2>
+            </div>
+            <button class="menu-toggle"  id="menuToggle" aria-label="فتح القائمة">☰</button>
+        </div>
+    </header>
+
+    <BLOGFA>
+    <main class="main-content">
+        <!-- Post container !-->
+        <div class="posts-container">
+            <article class="post">
+                <!-- Title !-->
+                <div class="post-title">
+                    <h2><a href="<-PostLink->"><-PostTitle-></a></h2>
+                </div>
+                <!-- Date, Time !-->
+                <div class="post-date">
+                    <-PostDate-> ساعت <-PostTime-> توسط <-PostAuthor->
+                </div>
+                <-PostContent->
+                <BlogComment>&nbsp;<span dir="rtl" comment-for="<-PostId->"></span></BlogComment>
+                <div class="clear"></div>
+
+                <!-- end postcontent --> 
+                 <BlogExtendedPost><a href="<-PostLink->">ادامه نوشته</a></BlogExtendedPost>
+
+
+                   <BlogPostTagsBlock>
+                          <div class="posttags">
+                                  <span>برچسب‌ها: </span><BlogPostTags separator=", "><a href="<-TagLink->"><-TagName-></a></BlogPostTags>
+                          </div>
+                  </BlogPostTagsBlock> 
+            </article>
+        
+
+        </div>
+            
+    </main>
+    </BLOGFA>
+    <div class="pagination">
+                <BlogNextAndPreviousBlock>
+                    <div class="nextandprevious">
+                        <BlogPreviousPageBlock>
+                            <a href="<-BlogPreviousPageLink->" class="previouslink"  >مطالب جدیدتر</a>
+                        </BlogPreviousPageBlock>
+                        <BlogNextPageBlock>
+                            <a href="<-BlogNextPageLink->" class="nextlink" >مطالب قدیمی‌تر</a>
+                        </BlogNextPageBlock>
+                        <div class="clear"></div>
+                    </div>
+                </BlogNextAndPreviousBlock>
+            </div>
+    
+    
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© تمامی حقوق محفوظ است - سیگار با ته‌چین ماست ۱۴۰۴</p>
+            <div class="footer-links">
+            <a href="http://www.blogfa.com">قدرت گرفته از BLOGFA.COM</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dates = document.querySelectorAll('.post-title, .post-date');
+        const arabicNumbers = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+        
+        dates.forEach(dateEl => {
+            dateEl.textContent = dateEl.textContent.replace(/\d/g, d => arabicNumbers[d]);
+        });
+    });
+</script>
+
+<script>
+        const toggleBtn = document.getElementById("menuToggle");
+        const sidebar = document.getElementById("sidebar");
+
+        toggleBtn.addEventListener("click", () => {
+            
+            sidebar.classList.toggle("active");
+        });
+</script>
+
+
+
+
+</body>
+</html>
